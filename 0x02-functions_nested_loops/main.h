@@ -1,6 +1,6 @@
 int _putchar(char c);
 
-void print_alphabet1(void);
+void print_alphabet(void);
 
 void print_alphabat_x10(void);
 
