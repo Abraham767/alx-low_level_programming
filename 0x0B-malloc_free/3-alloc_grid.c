@@ -3,42 +3,42 @@
 #include <stdlib.h>
 
 /**
- *  alloc_grid - allocatingn 2d array
- *  @width: width of an array
- *  @height: height of an array
- *  Return: a pointer to a allocated grid
+ *  alloc_grid - a function that return pointer
+ *  @width: input
+ *  @height: input
+ *  Return: 0
  */
 int **alloc_grid(int width, int height)
 {
-	int i, j, k, l;
-	int **a;
+	int i, n, k, j;
+	int **iarray;
 
 	if (width <= 0 || height <= 0)
 		return (NULL);
-	a = malloc(height * sizeof(int *));
-	if (a == NULL)
+	iarray = malloc(sizeof(int *) * height);
+	if (iarray == NULL)
 	{
-		free(a);
+		free(iarray);
 		return (NULL);
 	}
 	for (i = 0; i < height; i++)
 	{
-		a[i] = malloc(width * sizeof(int *));
-		if (a[i] == NULL)
+		iarray[i] = malloc(sizeof(int) * width);
+		if (iarray[i] == NULL)
 		{
 			for (j = i; j >= 0; j--)
 			{
-				free(a[j]);
+				free(iarray[j]);
 			}
-			free(a);
+			free(iarray);
 			return (NULL);
 		}
 	}
 
 	for (k = 0; k < height; k++)
 	{
-		for (l = 0; l < width; l++)
-			a[k][l] = 0;
+		for (n = 0; n < width; n++)
+			iarray[k][n] = 0;
 	}
-	return (a);
+	return (iarray);
 }
